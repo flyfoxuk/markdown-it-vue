@@ -106,6 +106,8 @@ export default {
             }
           })
         })
+
+        console.log('**** RENDERED *******');
       }
     }
   },
@@ -189,6 +191,7 @@ export default {
           }
         }
       })
+
     return {
       md: md
     }
