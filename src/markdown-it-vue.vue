@@ -105,9 +105,11 @@ export default {
               element.outerHTML = `<pre>flowchart complains: ${e}</pre>`
             }
           })
+
+          console.log('**** RENDERED EMIT HERE *******');
         })
 
-        console.log('**** RENDERED *******');
+       
       }
     }
   },
