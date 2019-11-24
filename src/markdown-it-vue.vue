@@ -77,39 +77,8 @@ export default {
   watch: {
     content: {
       immediate: true,
-      handler(val) {
-        this.$nextTick(() => {
-          this.$refs['markdown-it-vue-container'].innerHTML = this.md.render(
-            val
-          )
-          // render echarts
-          document.querySelectorAll('.md-echarts').forEach(element => {
-            try {
-              let options = JSON.parse(element.textContent)
-              let chart = echarts.init(element)
-              chart.setOption(options)
-            } catch (e) {
-              element.outerHTML = `<pre>echarts complains: ${e}</pre>`
-            }
-          })
-          // render mermaid
-          mermaid.init(undefined, document.querySelectorAll('.mermaid'))
-          // render flowchart
-          document.querySelectorAll('.md-flowchart').forEach(element => {
-            try {
-              let code = element.textContent
-              let chart = flowchart.parse(code)
-              element.textContent = ''
-              chart.drawSVG(element)
-            } catch (e) {
-              element.outerHTML = `<pre>flowchart complains: ${e}</pre>`
-            }
-          })
-
-          console.log('**** RENDERED EMIT HERE *******');
-        })
-
-       
+      handler(/*val*/) {
+        this.reRender()
       }
     }
   },
@@ -201,7 +170,41 @@ export default {
   methods: {
     use(plugin, options) {
       this.md.use(plugin, options)
-    }
+    },
+    reRender() {
+        this.$nextTick(() => {
+          this.$emit('beforeRender');
+          this.$refs['markdown-it-vue-container'].innerHTML = this.md.render(
+            this.content
+          )
+          // render echarts
+          document.querySelectorAll('.md-echarts').forEach(element => {
+            try {
+              let options = JSON.parse(element.textContent)
+              let chart = echarts.init(element)
+              chart.setOption(options)
+            } catch (e) {
+              element.outerHTML = `<pre>echarts complains: ${e}</pre>`
+            }
+          })
+          // render mermaid
+          mermaid.init(undefined, document.querySelectorAll('.mermaid'))
+          // render flowchart
+          document.querySelectorAll('.md-flowchart').forEach(element => {
+            try {
+              let code = element.textContent
+              let chart = flowchart.parse(code)
+              element.textContent = ''
+              chart.drawSVG(element)
+            } catch (e) {
+              element.outerHTML = `<pre>flowchart complains: ${e}</pre>`
+            }
+          })
+
+          this.$emit('afterRender');
+        })
+    },
+
   }
 }
 </script>
