@@ -4,34 +4,34 @@
 
 <script>
 import MarkdownIt from 'markdown-it'
-import MarkdownItEmoji from 'markdown-it-emoji'
-import MarkdownItSubscript from 'markdown-it-sub'
-import MarkdownItSuperscript from 'markdown-it-sup'
-import MarkdownItFootnote from 'markdown-it-footnote'
-import MarkdownItDeflist from 'markdown-it-deflist'
-import MarkdownItAbbreviation from 'markdown-it-abbr'
-import MarkdownItInsert from 'markdown-it-ins'
-import MarkdownItMark from 'markdown-it-mark'
-import MarkdownItKatex from 'markdown-it-katex'
-import MarkdownItTasklists from 'markdown-it-task-lists'
-import MarkdownItIcons from 'markdown-it-icons'
-import MarkdownItHighlight from 'markdown-it-highlight'
-import MarkdownItLatex from 'markdown-it-latex'
+//import MarkdownItEmoji from 'markdown-it-emoji'
+//import MarkdownItSubscript from 'markdown-it-sub'
+//import MarkdownItSuperscript from 'markdown-it-sup'
+//import MarkdownItFootnote from 'markdown-it-footnote'
+//import MarkdownItDeflist from 'markdown-it-deflist'
+//import MarkdownItAbbreviation from 'markdown-it-abbr'
+//import MarkdownItInsert from 'markdown-it-ins'
+//import MarkdownItMark from 'markdown-it-mark'
+//import MarkdownItKatex from 'markdown-it-katex'
+//import MarkdownItTasklists from 'markdown-it-task-lists'
+//import MarkdownItIcons from 'markdown-it-icons'
+//import MarkdownItHighlight from 'markdown-it-highlight'
+//import MarkdownItLatex from 'markdown-it-latex'
 import MarkdownItContainer from 'markdown-it-container'
-import MarkdownItGithubToc from 'markdown-it-github-toc'
-import MarkdownItSourceMap from 'markdown-it-source-map'
-import MarkdownItLinkAttributes from './markdown-it-link-attributes'
-import MarkdownItEcharts from './markdown-it-plugin-echarts'
-import MarkdownItMermaid from './markdown-it-plugin-mermaid'
-import MarkdownItFlowchart from './markdown-it-plugin-flowchart'
+//import MarkdownItGithubToc from 'markdown-it-github-toc'
+//import MarkdownItSourceMap from 'markdown-it-source-map'
+//import MarkdownItLinkAttributes from './markdown-it-link-attributes'
+//import MarkdownItEcharts from './markdown-it-plugin-echarts'
+//import MarkdownItMermaid from './markdown-it-plugin-mermaid'
+//import MarkdownItFlowchart from './markdown-it-plugin-flowchart'
 import 'github-markdown-css'
-import 'markdown-it-latex/dist/index.css'
-import 'markdown-it-icons/dist/index.css'
-import 'markdown-it-highlight/dist/index.css'
+//import 'markdown-it-latex/dist/index.css'
+//import 'markdown-it-icons/dist/index.css'
+//import 'markdown-it-highlight/dist/index.css'
 
-import echarts from 'echarts'
-import mermaid from 'mermaid'
-import flowchart from 'flowchart.js'
+//import echarts from 'echarts'
+//import mermaid from 'mermaid'
+//import flowchart from 'flowchart.js'
 
 const DEFAULT_OPTIONS_LINK_ATTRIBUTES = {
   attrs: {
@@ -91,25 +91,25 @@ export default {
     const optGithubToc = this.options.githubToc || DEFAULT_OPTIONS_GITHUBTOC
 
     let md = new MarkdownIt(optMarkdownIt)
-      .use(MarkdownItEmoji)
-      .use(MarkdownItSubscript)
-      .use(MarkdownItSuperscript)
-      .use(MarkdownItFootnote)
-      .use(MarkdownItDeflist)
-      .use(MarkdownItAbbreviation)
-      .use(MarkdownItInsert)
-      .use(MarkdownItMark)
-      .use(MarkdownItHighlight)
-      .use(MarkdownItLatex)
-      .use(MarkdownItSourceMap)
-      .use(MarkdownItMermaid)
-      .use(MarkdownItEcharts)
-      .use(MarkdownItFlowchart)
-      .use(MarkdownItLinkAttributes, linkAttributes)
-      .use(MarkdownItKatex, optKatex)
-      .use(MarkdownItTasklists, optTasklists)
-      .use(MarkdownItIcons, optIcons)
-      .use(MarkdownItGithubToc, optGithubToc)
+      //.use(MarkdownItEmoji)
+      //.use(MarkdownItSubscript)
+      //.use(MarkdownItSuperscript)
+      //.use(MarkdownItFootnote)
+      //.use(MarkdownItDeflist)
+      //.use(MarkdownItAbbreviation)
+      //.use(MarkdownItInsert)
+      //.use(MarkdownItMark)
+      //.use(MarkdownItHighlight)
+      //.use(MarkdownItLatex)
+      //.use(MarkdownItSourceMap)
+      //.use(MarkdownItMermaid)
+      //.use(MarkdownItEcharts)
+      //.use(MarkdownItFlowchart)
+      //.use(MarkdownItLinkAttributes, linkAttributes)
+      //.use(MarkdownItKatex, optKatex)
+      //.use(MarkdownItTasklists, optTasklists)
+      //.use(MarkdownItIcons, optIcons)
+      //.use(MarkdownItGithubToc, optGithubToc)
       .use(MarkdownItContainer, 'warning', {
         validate: function(params) {
           return params.trim() === 'warning'
@@ -177,6 +177,7 @@ export default {
           this.$refs['markdown-it-vue-container'].innerHTML = this.md.render(
             this.content
           )
+          /*
           // render echarts
           document.querySelectorAll('.md-echarts').forEach(element => {
             try {
@@ -200,6 +201,7 @@ export default {
               element.outerHTML = `<pre>flowchart complains: ${e}</pre>`
             }
           })
+          */
 
           this.$emit('afterRender');
         })
